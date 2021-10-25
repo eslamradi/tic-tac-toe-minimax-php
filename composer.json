@@ -1,0 +1,16 @@
+{
+    "name": "radi/awstreams-tictactoe",
+    "description": "this is an implementaion of the widely known tic-tac-toe in PHP the object oriented way",
+    "autoload": {
+        "psr-4": {
+            "TicTacToe\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "eslamradi",
+            "email": "eslamradii@gmail.com"
+        }
+    ],
+    "require": {}
+}
