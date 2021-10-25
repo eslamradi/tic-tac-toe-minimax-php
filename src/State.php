@@ -93,7 +93,7 @@ class State
      * @param int $col
      * @return char
      */
-    protected function getCellValue($row, $col)
+    public function getCellValue($row, $col)
     {
         return $this->cells[$row - 1][$col - 1];
     }
