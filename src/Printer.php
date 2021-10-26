@@ -177,4 +177,8 @@ class Printer
     public function printInvalidInputMessage() {
         $this->printLine($this->setRedColor('Invalid input!!! Please, read instructions above.'));
     }
+
+    public function printPlayAgainMessage() {
+        $this->printLine('Do you want to play again? press y/yes or any other key to dismiss.')
+    }
 }
