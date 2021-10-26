@@ -13,4 +13,8 @@ class Player {
         $this->name = $name;
         $this->score = 0;
     }
+
+    public function increaseScore() {
+        $this->score++;
+    }
 }
