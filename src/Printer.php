@@ -178,7 +178,12 @@ class Printer
         $this->printLine($this->setRedColor('Invalid input!!! Please, read instructions above.'));
     }
 
+    /**
+     * Prints messgae to ask user if he wants to play again
+     *
+     * @return void
+     */
     public function printPlayAgainMessage() {
-        $this->printLine('Do you want to play again? press y/yes or any other key to dismiss.')
+        $this->printLine('Do you want to play again? press y/yes or any other key to dismiss.');
     }
 }
