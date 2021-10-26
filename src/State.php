@@ -47,31 +47,31 @@ class State
     {
         switch ($position) {
             case '11':
-                $cells[0][0] = $sign;
+                $this->cells[0][0] = $sign;
                 break;
             case '12':
-                $cells[0][1] = $sign;
+                $this->cells[0][1] = $sign;
                 break;
             case '13':
-                $cells[0][2] = $sign;
+                $this->cells[0][2] = $sign;
                 break;
             case '21':
-                $cells[1][0] = $sign;
+                $this->cells[1][0] = $sign;
                 break;
             case '22':
-                $cells[1][1] = $sign;
+                $this->cells[1][1] = $sign;
                 break;
             case '23':
-                $cells[1][2] = $sign;
+                $this->cells[1][2] = $sign;
                 break;
             case '31':
-                $cells[2][0] = $sign;
+                $this->cells[2][0] = $sign;
                 break;
             case '32':
-                $cells[2][1] = $sign;
+                $this->cells[2][1] = $sign;
                 break;
             case '33':
-                $cells[2][2] = $sign;
+                $this->cells[2][2] = $sign;
                 break;
         }
     }
