@@ -6,7 +6,7 @@ class Printer
 {
 
     /**
-     * return text wrapped in php asci code to printed with color red to the console
+     * returns text wrapped in php asci code to printed with color red to the console
      *
      * @param string $string
      * @return string
@@ -17,7 +17,7 @@ class Printer
     }
 
     /**
-     * return text wrapped in php asci code to printed with color green to the console
+     * returns text wrapped in php asci code to printed with color green to the console
      *
      * @param string $string
      * @return string
@@ -28,7 +28,7 @@ class Printer
     }
 
     /**
-     * output line to php
+     * outputs line to php
      *
      * @param [type] $string
      * @return void
@@ -39,7 +39,7 @@ class Printer
     }
 
     /**
-     * returns a renderable string of the game board
+     * prints the game board to the console
      *
      * @param Board $board
      * @return void
