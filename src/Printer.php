@@ -168,4 +168,13 @@ class Printer
     public function printDrawMessage() {
         $this->printLine($this->setCyanColor('Game Drawn!'));
     }
+
+    /**
+     * prints message indicating user's invalid input
+     *
+     * @return void
+     */
+    public function printInvalidInputMessage() {
+        $this->printLine($this->setRedColor('Invalid input!!! Please, read instructions above.'));
+    }
 }
