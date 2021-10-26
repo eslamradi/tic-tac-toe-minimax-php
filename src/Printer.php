@@ -60,6 +60,7 @@ class Printer
     public function printBoard(Board $board)
     {
         $this->printLine('');
+        $this->printLine($this->setCyanColor('CURRENT GAME:'));
         $this->printLine('  1 2 3');
         for ($row = 1; $row <= 3; $row++) {
             $buffer = $row . ' ';
@@ -100,5 +101,14 @@ class Printer
         $this->printLine('Current Score');
         $this->printLine($one->name .': ' . $one->score);
         $this->printLine($two->name .': ' . $two->score);
+    }
+
+    /**
+     * clears the command line window
+     *
+     * @return void
+     */
+    public function clearScreen() {
+        echo "\e[H\e[J";
     }
 }
