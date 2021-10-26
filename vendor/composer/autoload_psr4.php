@@ -6,5 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Radi\\AwstreamsTictactoe\\' => array($baseDir . '/src'),
+    'TicTacToe\\' => array($baseDir . '/src'),
 );

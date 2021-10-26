@@ -1,6 +1,11 @@
 <?php 
 
-require __DIR__ . 'vendor/autoload.php';
+if (php_sapi_name() == 'cli') {
+    die('you can only acess this app from the command line');
+ }
+
+require __DIR__ . '/vendor/autoload.php';
+
 
 use TicTacToe\Engine;
 
@@ -8,10 +13,8 @@ $engine = new Engine;
 
 $engine->initializeGame();
 
-while ($engine->continuePlay()) {
+while ($engine->keepPlaying()) {
     $engine->startRound();
 }
 
-$engine->outputFinalResult();
-
-exit;
+// exit;
