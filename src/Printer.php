@@ -38,17 +38,24 @@ class Printer
         echo $string . PHP_EOL;
     }
 
-    public function renderBoard(Board $board) {
-            $this->printLine('  1 2 3');
-            for ($row=1; $row <= 3; $row++) { 
-                $buffer = $row . '';
-                for ($col=1; $col <= 3; $col++) { 
-                    $buffer = $board->state->getCellValue($row, $col) . '';
-                    if($col < 3) { // only print seperators and not outlines
-                        $buffer .= '|';
-                    }
+    /**
+     * returns a renderable string of the game board
+     *
+     * @param Board $board
+     * @return void
+     */
+    public function renderBoard(Board $board)
+    {
+        $this->printLine('  1 2 3');
+        for ($row = 1; $row <= 3; $row++) {
+            $buffer = $row . '';
+            for ($col = 1; $col <= 3; $col++) {
+                $buffer = $board->state->getCellValue($row, $col) . '';
+                if ($col < 3) { // only print seperators and not outlines
+                    $buffer .= '|';
                 }
-                $this->printLine($buffer);
             }
+            $this->printLine($buffer);
+        }
     }
 }
