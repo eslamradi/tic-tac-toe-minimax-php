@@ -60,7 +60,6 @@ class Printer
     public function printBoard(Board $board)
     {
         $this->printLine('');
-        $this->printLine($this->setCyanColor('CURRENT GAME:'));
         $this->printLine('  1 2 3');
         for ($row = 1; $row <= 3; $row++) {
             $buffer = $row . ' ';
@@ -127,10 +126,13 @@ class Printer
      * @param [type] $name
      * @return void
      */
-    public function printWelcomeReplyToUser($name) {
-        $this->printLine('welcome ' . $name . '! Do you want to start the game? press y/yes or any key for no');
+    public function printWelcomeReplyToUser($player) {
+        $this->printLine('welcome ' . $player->name . '!');
     }
 
+    public function printQuestionToPlayFirst() {
+        $this->printLine('type y / yes if you want to take the lead or touch any key to let the computer start');
+    }
     /**
      * prints message to ask user for their next move
      *
