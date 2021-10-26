@@ -111,4 +111,61 @@ class Printer
     public function clearScreen() {
         echo "\e[H\e[J";
     }
+
+    /**
+     * prints message to ask user to enter their name
+     *
+     * @return void
+     */
+    public function printUserNameQuestion() {
+        $this->printLine('Please enter your name: ');
+    }
+
+    /**
+     * prints message to welcome user to the game
+     *
+     * @param [type] $name
+     * @return void
+     */
+    public function printWelcomeReplyToUser($name) {
+        $this->printLine('welcome ' . $name . '! Do you want to start the game? press y/yes or any key for no');
+    }
+
+    /**
+     * prints message to ask user for their next move
+     *
+     * @param Player $player
+     * @return void
+     */
+    public function printQuestionForNextMove(Player $player) {
+        $this->printLine($player->name . "'s turn, what's your next move?");
+    }
+
+    /**
+     * prints message when user wins the game
+     *
+     * @param Player $player
+     * @return void
+     */
+    public function printPlayerWinsMessage(Player $player) {
+        $this->printLine($this->setGreenColor($player->name . " Wins!"));
+    }
+
+    /**
+     * prints message when computer wins the game
+     *
+     * @return void
+     */
+    public function printComputerWinsMessage() {
+        $this->printLine($this->setRedColor('Computer Wins!'));
+    }
+
+    /**
+     * prints message when game result is draw
+     *
+     * @return void
+     */
+    public function printDrawMessage() {
+        $this->printLine($this->setCyanColor('Game Drawn!'));
+    }
 }
