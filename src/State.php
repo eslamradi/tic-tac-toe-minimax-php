@@ -172,4 +172,20 @@ class State
         }
         return false;
     }
+
+    /**
+     * checks if the board state is complete and no other move can take place
+     *
+     * @return boolean
+     */
+    public function isStateComplete() {
+        for ($row=1; $row <= 3; $row++) { 
+            for ($col=1; $col <= 3; $col++) { 
+                if($this->getCellValue($row, $col) == '_'){
+                    return false;
+                }
+            }   
+        }
+        return true;
+    }
 }
