@@ -25,14 +25,15 @@ class State
             ['_', '_', '_'],
         ];
     }
-    
+
     /**
      * create a new state from an existing state
      *
      * @param State $state
      * @return void
      */
-    public function copyState(State $state) {
+    public function copyState(State $state)
+    {
         $this->cells = $state->getCurrentValues();
     }
 
@@ -76,6 +77,11 @@ class State
         }
     }
 
+    public function unsetMove($position)
+    {
+        $this->setMove($position, '_');
+    }
+
     /**
      * return current state values
      *
@@ -101,13 +107,14 @@ class State
     /**
      * return all available moves in the correct input format
      *
-     * @return void
+     * @return array
      */
-    public function getAvailableMoves () {
+    public function getAvailableMoves()
+    {
         $availableMoves = [];
-        for ($row=1; $row <= 3; $row++) { 
-            for ($col=1; $col <= 3; $col++) { 
-                if($this->getCellValue($row, $col) == '_') {
+        for ($row = 1; $row <= 3; $row++) {
+            for ($col = 1; $col <= 3; $col++) {
+                if ($this->getCellValue($row, $col) === '_') {
                     $availableMoves[] = (string) $row . (string) $col;
                 }
             }
@@ -120,11 +127,13 @@ class State
      *
      * @return boolean
      */
-    private function evaluateRows()
+    private function evaluateRows($sign = null)
     {
         for ($row = 1; $row <= 3; $row++) {
-            if (($this->getCellValue($row, 1) == $this->getCellValue($row, 2)) and ($this->getCellValue($row, 2) == $this->getCellValue($row, 3))) {
-                return true;
+            if (($this->getCellValue($row, 1) === $this->getCellValue($row, 2)) and ($this->getCellValue($row, 2) === $this->getCellValue($row, 3)) and $this->getCellValue($row, 3) !== '_') {
+                if ($sign and $this->getCellValue($row, 3) == $sign) {
+                    return true;
+                }
             }
         }
         return false;
@@ -135,11 +144,13 @@ class State
      *
      * @return boolean
      */
-    private function evaluateColumns()
+    private function evaluateColumns($sign = null)
     {
         for ($col = 1; $col <= 3; $col++) {
-            if (($this->getCellValue(1, $col) == $this->getCellValue(2, $col)) and ($this->getCellValue(2, $col) == $this->getCellValue(3, $col))) {
-                return true;
+            if (($this->getCellValue(1, $col) === $this->getCellValue(2, $col)) and ($this->getCellValue(2, $col) === $this->getCellValue(3, $col)) and $this->getCellValue(3, $col) !== '_') {
+                if ($sign and $this->getCellValue(3, $col) == $sign) {
+                    return true;
+                }
             }
         }
         return false;
@@ -150,12 +161,16 @@ class State
      *
      * @return boolean
      */
-    private function evaluateDiagonals()
+    private function evaluateDiagonals($sign = null)
     {
-        if (($this->getCellValue(1, 1) == $this->getCellValue(2, 2)) and ($this->getCellValue(2, 2) == $this->getCellValue(3, 3))) {
-            return true;
-        } else if (($this->getCellValue(1, 3) == $this->getCellValue(2, 2)) and ($this->getCellValue(2, 2) == $this->getCellValue(3, 1))) {
-            return true;
+        if (($this->getCellValue(1, 1) === $this->getCellValue(2, 2)) and ($this->getCellValue(2, 2) === $this->getCellValue(3, 3)) and $this->getCellValue(3, 3) != '_') {
+            if ($sign and $this->getCellValue(1, 1) == $sign) {
+                return true;
+            }
+        } else if (($this->getCellValue(1, 3) === $this->getCellValue(2, 2)) and ($this->getCellValue(2, 2) === $this->getCellValue(3, 1)) and $this->getCellValue(3, 1) != '_') {
+            if ($sign and $this->getCellValue(1, 3) == $sign) {
+                return true;
+            }
         }
         return false;
     }
@@ -165,26 +180,28 @@ class State
      *
      * @return void
      */
-    public function evaluate()
+    public function evaluate($sign = null)
     {
-        if ($this->evaluateRows() or $this->evaluateColumns() || $this->evaluateDiagonals()) {
+        if ($this->evaluateRows($sign) or $this->evaluateColumns($sign) or $this->evaluateDiagonals($sign)) {
             return true;
         }
         return false;
     }
 
     /**
-     * checks if the board state is complete and no other move can take place
+     * checks if the board state is complete AND no other move can take place
      *
      * @return boolean
      */
-    public function isStateComplete() {
-        for ($row=1; $row <= 3; $row++) { 
-            for ($col=1; $col <= 3; $col++) { 
-                if($this->getCellValue($row, $col) == '_'){
+    public function isStateComplete()
+    {
+        // return true;
+        for ($row = 1; $row <= 3; $row++) {
+            for ($col = 1; $col <= 3; $col++) {
+                if ($this->getCellValue($row, $col) == '_') {
                     return false;
                 }
-            }   
+            }
         }
         return true;
     }
