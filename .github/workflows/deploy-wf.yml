@@ -16,5 +16,7 @@ jobs:
 
           script: |
             cd /var/www/tic-tac-toe
+            printf "APP_ENV=production\r\n
+            APP_NAME='tic tac toe'" > .env.prod
             git pull origin master
             composer install
